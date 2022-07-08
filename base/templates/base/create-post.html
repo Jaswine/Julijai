@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block title %}Создние Нового Поста{% endblock title %}
+
+{% block content %}
+<form method = "POST" class = "create-form" action = "{% url 'base:create-post' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{form.media}}
+    {{form.as_p}} 
+
+    <input type = "submit" class = "btn btn-min" value='сохранить'>
+</form>
+<style> 
+    .btn {
+        max-width: 200px;
+    }
+    .create-form {
+        margin-top: 10%;
+    }
+</style>
+{% endblock content %}

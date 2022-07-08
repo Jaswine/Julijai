@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+
+{% block title %}
+    {% if page == 'login' %}
+        Вход в аккаунт
+    {% else %}
+        Регестрация
+    {% endif %}
+{% endblock title %}
+
+{% block content %}
+{% if page == 'login' %}
+<form class = "login__form" method="POST">
+    {% csrf_token %}
+    <input type = "text" name="username" placeholder="логин...">
+    <input type = "password" name = "password" placeholder="пароль...">
+    <input type="submit" class = "btn" value = "войти">
+    <p>Хотите создать новый аккаунт?<a class = "link" href = "{% url 'base:register' %}">Register</a></p>
+</form>
+{% else %}<!---->
+<form class = "login__form" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" class = "btn" value = "зарегестрироваться">
+    <p>У вас уже есть аккаунт?<a class = "link" href = "{% url 'base:login' %}">Войти</a></p>
+</form>
+{% endif %}
+
+<style>
+    .login__form input {
+        max-width: 400px;
+    }
+    .link {
+        color: #00fb00;
+        font-size: 1.2rem;
+        margin: 0 10px;
+    }
+    .link:hover{
+        text-shadow: 3px 3px 1px #00fb00;
+        color: aliceblue;
+    }
+</style>
+{% endblock content %}

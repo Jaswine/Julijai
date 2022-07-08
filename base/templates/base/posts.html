@@ -1,0 +1,34 @@
+{% extends 'main.html ' %}
+
+{% block title %}Все Посты{% endblock title %}
+
+{% block content %}
+<h1>Все посты</h1>
+<div class="content__post">
+    <div class="tags"><!--TODO: All Tags for filter-->
+        <h2>Tags</h2>
+        <hr>
+        <a class = "topic" href = "{% url 'base:posts' %}">All</a>
+        {% for tag in tags %}
+            <a class = "topic" href="{% url 'base:posts'  %}?q={{tag.name}}">#{{tag.name}}</a>
+        {% endfor %}
+    </div>
+    <div class="pre_posts">
+        
+        <!-- <stories>
+            {% include 'base/components/story__component.html' %}
+        </stories> -->
+
+        {% if posts__cout == 1 or posts__cout == 21  %} <!--TODO: how many posts -->
+            <p>Всего найден {{posts__cout}} пост</p>
+        {% elif posts__cout == 2 or posts__cout == 3 or posts__cout == 4  or posts__cout == 22 %}
+            <p>Всего найдено {{posts__cout}} поста</p>
+        {% else %}
+            <p>Всего найдено {{posts__cout}} постов</p>
+        {% endif %}
+        <div class="posts"><!--TODO: posts-->
+            {% include 'base/components/post__component.html' %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

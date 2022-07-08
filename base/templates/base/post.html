@@ -1,0 +1,135 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load social_share %}
+
+{% block title %}{{post.name}}{% endblock title %}
+
+{% block content %}
+<div class="article__img" style="background-image: url('{{post.image.url}}');"></div>
+<div class="article" >
+    <div class="article__item"><!--TODO: Article-->
+        <h1>{{post.name}}</h1>
+        <span class = "line"></span>
+        <div class="article__text">
+            {{post.text}}
+        </div>
+        <div class="article__nav">
+            <p>#{{post.tag}}</p>
+            <p>{{post.updated}}</p>
+        </div>
+
+        <div class="likes"> 
+            <div class="likes__block"><!--TODO: likes and dislikes-->
+                <form method="POST" action="{% url 'base:like' post.pk %}">
+                    {% csrf_token %}
+                    <div>
+                        <input type="hidden" name="text" value="{{ request.path }}">
+                        {% if request.user.is_authenticated %}
+                            <button type="submit">
+                                <img class = 'like'  src="{% static 'images/heart.png' %}">
+                                <span>{{ post.likes.all.count }}</span>
+                            </button>
+                        {% else %}
+                            <a href = '{% url 'base:login' %}'>
+                                <img class = 'like'  src="{% static 'images/heart.png' %}">
+                                <span>{{ post.likes.all.count }}</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                </form>
+                 <form method="POST" action="{% url 'base:dislike' post.pk %}">
+                    {% csrf_token %}
+                    <div>
+                        <input type="hidden" name="text" value="{{ request.path }}">
+                        {% if request.user.is_authenticated %}
+                            <button type="submit">
+                                <img class = 'like' src="{% static 'images/deslike.png' %}">
+                                <span>{{ post.dislikes.all.count }}</span>
+                            </button>
+                        {% else %}
+                            <a href="{% url 'base:login' %}">
+                                <img class = 'like' src="{% static 'images/deslike.png' %}">
+                                <span>{{ post.dislikes.all.count }}</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                 </form>
+            </div>
+            <div class="form__links"><!--TODO Share on twitter, reddit, telegram and other social media -->
+                {% post_to_twitter "Новый пост: '{{post.name}}' на сайте Julijai IT-Hub. Хотите посмотреть? го - " object_or_url '<img class="like-mini" src="https://cdn-icons.flaticon.com/png/512/2504/premium/2504947.png?token=exp=1657037575~hmac=ee05c42900038d676ac8135200e1f14f" >'  %}
+                {% post_to_facebook object_or_url '<img class="like-mini" src="https://cdn-icons.flaticon.com/png/512/2504/premium/2504903.png?token=exp=1657039036~hmac=cb1e6ffbdd1cdc365355101a0433dd94">' %}
+                {% post_to_reddit  "Новый пост: '{{post.name}}' на сайте Julijai IT-Hub. Хотите посмотреть? " object_or_url '<img class="like-mini" src="https://cdn-icons-png.flaticon.com/512/1409/1409938.png">' %}
+                {% post_to_telegram    "Новый пост: '{{post.name}}' на сайте Julijai IT-Hub. Хотите посмотреть? го - " object_or_url '<img class="like-mini" src="https://cdn-icons.flaticon.com/png/512/2504/premium/2504941.png?token=exp=1657038398~hmac=9ea6309a638e68763a1486518e3c28e7">' %}
+                {% post_to_whatsapp object_or_url '<img class="like-mini" src="https://cdn-icons.flaticon.com/png/512/2504/premium/2504957.png?token=exp=1657039420~hmac=eadd55167a531a8c6bb08888d294c2f0">'  %}
+            </div>
+        </div>
+ 
+        <div class="article__comment"><!--TODO: comments -->
+            <h2>Comments</h2>
+            <hr>
+            {% if request.user.is_authenticated %}<!--TODO: create comment -->
+                <form class = "comment__form" action="" method="POST">
+                    {% csrf_token %}
+                    <input type="search" placeholder="Какой сегодня красивый день..." class ="comment__input" name ='body'>
+                </form>
+            {% endif %}
+            <div class="comment__lists"> <!--TODO: return all comments -->
+                {% for comment in comments %}
+                    <div class="comment__block">
+                        <div class ="article__nav">
+                            <h3>@{{comment.user}}</h3>
+                            <p>{{comment.updated}}</p>
+                        </div>
+                        <div class = "article__body">{{comment.body}}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .likes {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .like {
+        width: 50px;
+        height: 50px;
+    }
+    .like-mini {
+        width: 34px;
+        height: 34px;
+        margin: 0 .4rem;
+        border-radius: 30%;
+        box-shadow: 1px 1px 5px black;
+    }
+    .like-mini:hover {
+        box-shadow: 
+            inset -2px -2px 5px #fff,
+            2px 2px 5px #fff;
+    }
+    button {
+        background-color: transparent;
+        text-align: center;
+        border: none;
+    }
+    .likes {
+        margin: 0 1%;
+    }
+    span {
+        color: aliceblue;
+    }
+    .form__links {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    .likes__block {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+</style>
+{% endblock content %}

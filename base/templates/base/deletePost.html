@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block title %}Удаление - {{post.name}} {% endblock title %}
+
+{% block content %}
+<form action="" method="POST"  class = "delete-post">
+    {% csrf_token %}
+    <h2>Вы хотите убить этот пост - "<span style="color: coral;;">{{post.name}}</span>" ?</h2>
+    <a href="{{request.META.HTTP_REFERER}}" class = "btn">Нет, я передуматьс</a>
+    <input type="submit" value="Удалить" style="margin:  0 .5%" class = "btn btn-red">
+</form>
+<style>
+    .delete-post {
+        margin: 20% 0 ;
+        padding: 0 10%;
+    } 
+    .btn {
+        max-width: 200px;
+    }
+</style>
+{% endblock content %}

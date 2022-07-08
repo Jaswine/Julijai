@@ -1,0 +1,81 @@
+{% extends 'main.html ' %}
+
+{% block title %}Julijai ITHub{% endblock title %}
+
+{% block content %}
+<div class="StoryFull">
+    <div class="StoryFull__field"></div>
+    <div class="StoryFull__content">{{post.name}}</div>
+</div>
+
+<!-- ! Stories -->
+<div class="story"><!--TODO: Stories-->
+    <div class="stores__back">
+        <span class = "stores__lin"></span>
+        <div class = "stores__body">
+            <div class = "stores__title">Популярное в этом месяце</div>
+            <div class = "stores__tag">обновляется каждый месяц</div>
+        </div>
+    </div>
+    <stories>
+        {% include 'base/components/story__component.html' %}
+    </stories>
+
+</div>
+
+<!-- ! Posts -->
+<div class="posts">
+{% include 'base/components/post__component.html' %}
+<div class="post__button">
+
+    <div class="post__inner">
+        <div class="post__border post__border__dop">
+            <h2 class="post__name">Do u wanna see all posts?</h2>
+            <a href="{% url 'base:posts' %}" class="btn btn-cont">Перейти</a>
+        </div>
+    </div>
+</div>
+
+</div>
+<style>
+    .StoryFull {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: fixed;
+        z-index: 100;
+        width: 100vw;
+        height: 100vh;
+    }
+    .StoryFull__field {
+        background-color: rgb(0,0,0,.8);
+        z-index: 101;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .StoryFull__content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        max-width: 600px;
+        max-height: 600px;
+        min-width: 600px;
+        min-height: 600px;
+        width: 100%;
+        height: 100%;
+
+        position: fixed;
+        z-index: 110;
+        background-color: aliceblue;
+    }
+</style>
+{% endblock content %}

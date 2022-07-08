@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+{% block title %}Создние Нового Сториса{% endblock title %}
+{% block content %}
+<form method = "POST" class = "create-form" action = "{% url 'base:create-story' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{form.media}}
+    {{form.as_p}} 
+
+    <input type = "submit" class = "btn btn-min" value='сохранить'>
+</form>
+<style> 
+    .btn {
+    max-width: 200px;
+}
+</style>
+{% endblock content %}
