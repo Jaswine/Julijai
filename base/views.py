@@ -13,7 +13,7 @@ from django.views import View
 from .models import *
 from .forms import *
 
-
+#! regestration, login and logout
 def loginPage(request):
     page = 'login'
     if request.method == 'POST':
@@ -45,10 +45,12 @@ def registersUser(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.save()
-            login(request, user)
-            return redirect('base:home')
+            new_user = form.save(commit=False)
+            new_user.save()
+            # profile = ProfileUser.objects.create(user=new_user)
+            login(request, new_user)
+            return redirect('base:change-profile', pk=new_user.id)
+            # return redirect('base:home')
         else:
             messages.error(request, 'Ошибка при регистрации аккаунта...')
 
@@ -56,8 +58,9 @@ def registersUser(request):
     return render(request, 'base/login_register.html', context)
 
 
+#! simple page (home, posts, post)
 def home(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all()[:5]
     stories = Story.objects.all()
 
     context = {'posts': posts, 'stories': stories}
@@ -87,6 +90,7 @@ def post(request,pk):
             body = request.POST.get('body')
         )
         return redirect('base:post', pk=post.id)
+    
 
     context = {'post': post, 'comments': comments}
     return render(request, 'base/post.html', context)
@@ -107,13 +111,10 @@ def createPost(request):
 @login_required(login_url='base:login')
 def updatePost(request,pk):
     post = Post.objects.get(id=pk)
-    form = PostForm(instance=post)
-
-    if request.user != post.user:
-        return HttpResponse('None')
+    form = PostFormUpdate(instance=post)
 
     if request.method == 'POST':
-        form = PostForm(request.POST,instance=post)
+        form = PostFormUpdate(request.POST,instance=post)
         if form.is_valid():
             form.save()
             return redirect('base:home')
@@ -170,7 +171,7 @@ def updateStory(request,pk):
     context = {'form':form}
     return render(request, 'base/createStory.html', context)
 
-
+#! like and dislike
 class AddLike(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
         post = Post.objects.get(pk=pk)
@@ -212,3 +213,42 @@ class AddDislike(LoginRequiredMixin, View):
         if is_dislike:
             post.dislikes.remove(request.user)
         return HttpResponseRedirect(reverse('base:post', args=[str(pk)]))
+
+#! profile
+def Profile(request,pk):
+    user = User.objects.get(id=pk)
+    profileUser = ProfileUser.objects.get(id=pk)
+    posts = Post.objects.all()[:3]
+    comments = user.comment_set.all()
+
+    context = {'user':user, 'posts': posts,'comments': comments, 'profileUser': profileUser}
+    return render(request, 'base/profile.html', context)
+
+@login_required(login_url='base:login')
+def createProfile(request,pk):
+    user = User.objects.get(id=pk)
+    UserForm = UserEditForm()
+    ProfileForm = ProfileEditForm()
+
+    if request.method == 'POST':
+        UserForm = UserEditForm(request.POST)
+        ProfileForm = ProfileEditForm(request.POST)
+        if ProfileForm.is_valid():
+            UserForm.save()
+            ProfileForm.save()
+            return redirect('base:home')
+
+    context = {'user':user, 'UserForm': UserForm,'ProfileForm': ProfileForm}
+    return render(request, 'base/profileForm.html', context)
+
+#! delete comment
+@login_required(login_url='base:login')
+def commentDelete(request,pk):
+    comment = Comment.objects.get(id=pk)
+
+    if request.method == 'POST':
+        comment.delete()
+        return redirect('base:home')
+
+    context = {'post':comment}
+    return render(request, 'base/deletePost.html', context)   

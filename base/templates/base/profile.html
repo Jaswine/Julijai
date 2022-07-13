@@ -1,0 +1,90 @@
+{% extends 'main.html' %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+<div class="profile">
+  <div class="profile__header">
+    
+    <img src="{{profileUser.img.url}}" class ="profile__img" alt="">
+    <div class="profile__name">{{user.username}}</div>
+    <div class="profile__email">{{user.email}}</div>
+    {% if request.user.is_authenticated %}
+      {% if request.user == user %}
+        <a class="btn btn-margin" href="{% url 'base:change-profile' user.id %}">Изменить Профиль</a>
+      {% endif %}      
+    {% endif %}
+    <div class="profile__description">
+      <div class="profile__left">
+        <div class="profile__Date">
+          {% if profileUser.img %}
+            <img src="https://cdn-icons-png.flaticon.com/512/3176/3176395.png" class = "icon" alt="">
+          {% else %}
+            <img src="https://cdn-icons.flaticon.com/png/512/591/premium/591576.png?token=exp=1657523134~hmac=1610f6def28f26aa2f5d31d2cc626ec7" class = "icon" alt="">
+          {% endif %}
+          <div class="profile__birthday">{{profileUser.birthday}}</div>
+        </div>
+          <div class="profile__about">{{profileUser.about}}</div>
+      </div>
+      <div class="profile__right">
+        {% if profileUser.twitter %}
+          <a target = "_blank" title="profileUser" href="{{profileUser.twitter}}"><img src="https://cdn-icons.flaticon.com/png/512/2504/premium/2504947.png?token=exp=1657528729~hmac=6781516d25986d7ef1dc365bec987880" class = "icon-max" alt=""></a>
+        {% elif profileUser.facebook %}
+          <a title="facebook" href="{{profileUser.facebook}}" target = "_blank"><img src="https://cdn-icons.flaticon.com/png/512/2504/premium/2504947.png?token=exp=1657522321~hmac=f0cd0fcea46de2c9292f6d2eb1bf122b" class = "icon-max" alt=""></a>
+        {% else %}
+          <p>Здесь нет ссылок на соц. сети</p>
+        {% endif %}
+        {% comment %} <a  title ="icon" href=""><img src="https://cdn-icons.flaticon.com/png/512/2504/premium/2504947.png?token=exp=1657522321~hmac=f0cd0fcea46de2c9292f6d2eb1bf122b" class = "icon-max" alt=""></a> {% endcomment %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="after-profile">
+  <div class="comments">
+    <h2>Комментарии</h2>
+    <hr>
+    <div class="comment__lists"> <!--TODO: return all comments -->
+      {% if comments %}
+        {% for comment in comments %}
+            <div class="comment__block">
+                <div class ="article__nav">
+                    <div class="article__center">
+                      <a href="{% url 'base:profile' comment.user.id %}"><h3>@{{comment.user}}</h3></a>
+                      <p class = "both"> &hArr; </p>
+                      <a href = "{% url 'base:post' comment.post.id %}"><h3 class="post__name">{{comment.post}}</h3></a>
+                    </div>
+                    <p>{{comment.updated}}</p>
+                </div>
+                <div class = "article__body">{{comment.body}}</div>
+                {% if request.user == comment.user %}
+                    <div class="article__nav">
+                        <div class=""></div>
+                        <a href="{% url 'base:comment-delete' comment.id %}" class="btn btn-red">Delete</a>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+      {% else %}
+      <h3 class = "none">Здесь нет комментариев</h3>
+      {% endif %}
+  </div>
+  </div>
+  <div class="what__u__can__read">
+    <h2>Последние статьи</h2>
+    <hr>
+    <div class="posts"><!--TODO: posts-->
+      {% include 'base/components/post__component.html' %}
+    </div>
+  </div>
+</div>
+<style>
+  .btn-margin {
+    margin: 1% 0 0;
+  }
+  .none {
+    color: rgb(254,254,254,.5);
+    text-align: center;
+    margin: 5% 0;
+  }
+</style>
+{% endblock content %}

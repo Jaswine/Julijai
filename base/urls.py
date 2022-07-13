@@ -10,6 +10,7 @@ urlpatterns = [
 
     path('<str:pk>/like/', views.AddLike.as_view(), name='like'),
     path('<str:pk>/dislike/', views.AddDislike.as_view(), name='dislike'),
+    path('comment-delete/<str:pk>/', views.commentDelete, name='comment-delete'),
 
     path('', views.home, name='home' ),
     path('posts/', views.posts, name='posts'),
@@ -21,5 +22,8 @@ urlpatterns = [
 
     path('create-story/', views.createStory, name='create-story'),
     path('delete-story/<str:pk>/', views.deleteStory, name='delete-story'),
-    path('update-story/<str:pk>/', views.updateStory, name='update-story')
+    path('update-story/<str:pk>/', views.updateStory, name='update-story'),
+
+    path('profile/<str:pk>/', views.Profile, name='profile'),
+    path('change-profile/<str:pk>/', views.createProfile, name='change-profile')
 ]

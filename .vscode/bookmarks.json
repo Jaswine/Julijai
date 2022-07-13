@@ -1,0 +1,139 @@
+{
+	"files": [
+		{
+			"path": "base/forms.py",
+			"bookmarks": [
+				{
+					"line": 5,
+					"column": 2,
+					"label": ""
+				},
+				{
+					"line": 10,
+					"column": 2,
+					"label": ""
+				},
+				{
+					"line": 15,
+					"column": 2,
+					"label": ""
+				},
+				{
+					"line": 25,
+					"column": 10,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "base/views.py",
+			"bookmarks": [
+				{
+					"line": 16,
+					"column": 2,
+					"label": ""
+				},
+				{
+					"line": 37,
+					"column": 9,
+					"label": ""
+				},
+				{
+					"line": 41,
+					"column": 6,
+					"label": ""
+				},
+				{
+					"line": 61,
+					"column": 6,
+					"label": ""
+				},
+				{
+					"line": 68,
+					"column": 8,
+					"label": ""
+				},
+				{
+					"line": 82,
+					"column": 8,
+					"label": ""
+				},
+				{
+					"line": 99,
+					"column": 8,
+					"label": ""
+				},
+				{
+					"line": 111,
+					"column": 8,
+					"label": ""
+				},
+				{
+					"line": 125,
+					"column": 8,
+					"label": ""
+				},
+				{
+					"line": 137,
+					"column": 8,
+					"label": ""
+				},
+				{
+					"line": 149,
+					"column": 8,
+					"label": ""
+				},
+				{
+					"line": 186,
+					"column": 8,
+					"label": ""
+				},
+				{
+					"line": 207,
+					"column": 8,
+					"label": ""
+				},
+				{
+					"line": 227,
+					"column": 2,
+					"label": ""
+				},
+				{
+					"line": 245,
+					"column": 17,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "base/models.py",
+			"bookmarks": [
+				{
+					"line": 29,
+					"column": 21,
+					"label": ""
+				},
+				{
+					"line": 36,
+					"column": 21,
+					"label": ""
+				},
+				{
+					"line": 57,
+					"column": 21,
+					"label": ""
+				},
+				{
+					"line": 72,
+					"column": 21,
+					"label": ""
+				},
+				{
+					"line": 91,
+					"column": 23,
+					"label": ""
+				}
+			]
+		}
+	]
+}

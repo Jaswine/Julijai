@@ -77,10 +77,16 @@
                 {% for comment in comments %}
                     <div class="comment__block">
                         <div class ="article__nav">
-                            <h3>@{{comment.user}}</h3>
+                            <a href="{% url 'base:profile' comment.user.id %}"><h3>@{{comment.user}}</h3></a>
                             <p>{{comment.updated}}</p>
                         </div>
                         <div class = "article__body">{{comment.body}}</div>
+                        {% if request.user == comment.user %}
+                            <div class="article__nav">
+                                <div class=""></div>
+                                <a href="{% url 'base:comment-delete' comment.id %}" class="btn btn-red">Delete</a>
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>

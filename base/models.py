@@ -1,9 +1,29 @@
-from email.policy import default
-from statistics import mode
 from django.db import models
 from django.contrib.auth.models import User
-from ckeditor.fields import RichTextField
+from ckeditor.fields import RichTextField  #? RichTextUploadingField
 from base.validators import img__size, story_size
+from django.conf import settings
+
+class ProfileUser(models.Model):
+    #? id ?
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
+    # email = models.ForeignKey(, on_delete=models.SET_NULL, null=True)
+    img = models.ImageField(null=True, blank=True, upload_to='static/images/',  validators=[img__size])
+    birthday = models.DateField(blank=True)
+    about = models.TextField(max_length=1000)
+
+    #? social media
+    twitter = models.URLField(null=True, blank=True)
+    facebook = models.URLField(null=True, blank=True)
+    instagram = models.URLField(null=True, blank=True)
+    telegram = models.URLField(null=True, blank=True)
+    vk = models.URLField(null=True, blank=True)
+    reddit  = models.URLField(null=True, blank=True)
+
+    def __str__(self):
+        return 'Profile for user {}'.format(self.user.username)
+    # def __str__(self):
+    #      return self.user
 
 # ! contents and tags for this contents
 # TODO: tags for posts and stories
@@ -17,10 +37,9 @@ class Tag(models.Model):
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=200)
-    image = models.ImageField(null=True, blank=True, upload_to='static/images/',  validators=[img__size])
+    image = models.ImageField(upload_to='static/images/',null=True,  validators=[img__size])
     tag = models.ForeignKey(Tag, on_delete=models.SET_NULL, null=True, blank=True)
-    text = RichTextField()
-    
+    text = RichTextField() #? RichTextUploadingField
     likes = models.ManyToManyField(User, blank=True, related_name='likes')
     dislikes = models.ManyToManyField(User, blank=True, related_name='dislikes')
 
@@ -55,7 +74,7 @@ class Story(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     name = models.CharField(max_length=255)
     tag = models.ForeignKey(Tag, on_delete=models.SET_NULL,null=True)
-    video = models.FileField(null=True, blank=True, upload_to='static/images', validators=[story_size])
+    video = models.FileField(null=True, upload_to='static/images', validators=[story_size])
     
     likes = models.ManyToManyField(User, blank=True, related_name='likesStory')
     dislikes = models.ManyToManyField(User, blank=True, related_name='dislikesStory')

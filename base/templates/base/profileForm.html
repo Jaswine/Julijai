@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+
+{% block title %}Изменить Профиль{% endblock title %}
+
+{% block content %}
+<form class="login__form" method='POST' action="{% url 'base:change-profile' user.id %}" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  {{ProfileForm.media}}
+  {{UserForm.as_p}}
+  {{ProfileForm.as_p}}
+
+  <input type="submit" class="btn btn-min" value="Сохранить">
+</form>
+<style>
+  .btn-min {
+    max-width: 200px;
+  }
+</style>
+{% endblock content %}
