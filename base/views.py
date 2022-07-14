@@ -1,5 +1,5 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, redirect, render
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate,logout
 from django.db.models import Q
@@ -9,7 +9,6 @@ from django.urls import reverse
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
-
 from .models import *
 from .forms import *
 
@@ -47,9 +46,10 @@ def registersUser(request):
         if form.is_valid():
             new_user = form.save(commit=False)
             new_user.save()
-            # profile = ProfileUser.objects.create(user=new_user)
+            profile = ProfileUser.objects.create(user=new_user)
             login(request, new_user)
-            return redirect('base:change-profile', pk=new_user.id)
+            return redirect('base:create-profile')
+            # return redirect('base:create-profile', pk=new_user.id)
             # return redirect('base:home')
         else:
             messages.error(request, 'Ошибка при регистрации аккаунта...')
@@ -216,8 +216,8 @@ class AddDislike(LoginRequiredMixin, View):
 
 #! profile
 def Profile(request,pk):
-    user = User.objects.get(id=pk)
-    profileUser = ProfileUser.objects.get(id=pk)
+    user = User.objects.get(user=pk)
+    profileUser = ProfileUser.objects.get(user=pk)
     posts = Post.objects.all()[:3]
     comments = user.comment_set.all()
 
@@ -225,8 +225,8 @@ def Profile(request,pk):
     return render(request, 'base/profile.html', context)
 
 @login_required(login_url='base:login')
-def createProfile(request,pk):
-    user = User.objects.get(id=pk)
+def createProfile(request):
+    # user = User.objects.get(id=pk)
     UserForm = UserEditForm()
     ProfileForm = ProfileEditForm()
 
@@ -238,7 +238,24 @@ def createProfile(request,pk):
             ProfileForm.save()
             return redirect('base:home')
 
-    context = {'user':user, 'UserForm': UserForm,'ProfileForm': ProfileForm}
+    context = {'UserForm': UserForm,'ProfileForm': ProfileForm}
+    return render(request, 'base/profileForm.html', context)
+
+@login_required(login_url='base:login')
+def updateProfile(request,pk):
+    user = User.objects.get(id=pk)
+    UserForm = UserEditForm(instance=user)
+    ProfileForm = ProfileEditForm(instance=user)
+
+    if request.method == 'POST':
+        UserForm = UserEditForm(request.POST, instance=user)
+        ProfileForm = ProfileEditForm(request.POST, instance=user)
+        if ProfileForm.is_valid():
+            UserForm.save()
+            ProfileForm.save()
+            return redirect('base:home')
+
+    context = {'user': user,'UserForm': UserForm,'ProfileForm': ProfileForm}
     return render(request, 'base/profileForm.html', context)
 
 #! delete comment

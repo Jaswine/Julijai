@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import * 
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ['user', 'birthday', 'img']
+    list_display = ['user', 'img']
 
 admin.site.register(ProfileUser, ProfileAdmin)
 # admin.site.register(Profile)

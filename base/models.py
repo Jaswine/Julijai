@@ -9,8 +9,8 @@ class ProfileUser(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     # email = models.ForeignKey(, on_delete=models.SET_NULL, null=True)
     img = models.ImageField(null=True, blank=True, upload_to='static/images/',  validators=[img__size])
-    birthday = models.DateField(blank=True)
-    about = models.TextField(max_length=1000)
+    birthday = models.DateField(blank=True, null=True)
+    about = models.TextField(max_length=1000, null=True)
 
     #? social media
     twitter = models.URLField(null=True, blank=True)

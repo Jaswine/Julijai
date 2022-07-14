@@ -29,17 +29,22 @@
 			"path": "base/views.py",
 			"bookmarks": [
 				{
-					"line": 16,
+					"line": 0,
+					"column": 0,
+					"label": ""
+				},
+				{
+					"line": 15,
 					"column": 2,
 					"label": ""
 				},
 				{
-					"line": 37,
+					"line": 36,
 					"column": 9,
 					"label": ""
 				},
 				{
-					"line": 41,
+					"line": 40,
 					"column": 6,
 					"label": ""
 				},
@@ -84,13 +89,23 @@
 					"label": ""
 				},
 				{
-					"line": 186,
-					"column": 8,
+					"line": 160,
+					"column": 4,
 					"label": ""
 				},
 				{
-					"line": 207,
-					"column": 8,
+					"line": 174,
+					"column": 3,
+					"label": ""
+				},
+				{
+					"line": 195,
+					"column": 3,
+					"label": ""
+				},
+				{
+					"line": 217,
+					"column": 10,
 					"label": ""
 				},
 				{
@@ -99,7 +114,7 @@
 					"label": ""
 				},
 				{
-					"line": 245,
+					"line": 262,
 					"column": 17,
 					"label": ""
 				}

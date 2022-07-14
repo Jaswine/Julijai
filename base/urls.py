@@ -25,5 +25,6 @@ urlpatterns = [
     path('update-story/<str:pk>/', views.updateStory, name='update-story'),
 
     path('profile/<str:pk>/', views.Profile, name='profile'),
-    path('change-profile/<str:pk>/', views.createProfile, name='change-profile')
+    path('create-profile', views.createProfile, name='create-profile'),
+    path('change-profile/<str:pk>/', views.updateProfile, name='change-profile'),
 ]

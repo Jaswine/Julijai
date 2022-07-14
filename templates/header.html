@@ -17,7 +17,7 @@
         </div> {% endcomment %}
         {% if request.user.is_authenticated %}
         <a class = 'btn' href= "{% url 'base:logout' %}">logout</a>
-        <a href="{% url 'base:profile' request.user.id %}"><h2>{{request.user}}</h2></a>
+        <a href="{% url 'base:profile' request.user.username %}"><h2>{{request.user}}</h2></a>
         {% else %}
         <a class = 'btn' href= "{% url 'base:login' %}">login</a>
         {% endif %}
