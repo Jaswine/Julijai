@@ -171,7 +171,8 @@ def updateStory(request,pk):
     context = {'form':form}
     return render(request, 'base/createStory.html', context)
 
-#! like and dislike
+
+#! like and dislike FOR POST
 class AddLike(LoginRequiredMixin, View):
     def post(self, request, pk, *args, **kwargs):
         post = Post.objects.get(pk=pk)
@@ -213,6 +214,51 @@ class AddDislike(LoginRequiredMixin, View):
         if is_dislike:
             post.dislikes.remove(request.user)
         return HttpResponseRedirect(reverse('base:post', args=[str(pk)]))
+
+
+class AddLikeStory(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        post = Story.objects.get(pk=pk)
+        is_dislike = False
+        for dislike in post.dislikes.all():
+            if dislike == request.user:
+                is_dislike = True
+                break
+        if is_dislike:
+            post.dislikes.remove(request.user)
+        is_like = False
+        for like in post.likes.all():
+            if like == request.user:
+                is_like = True
+                break
+        if not is_like:
+            post.likes.add(request.user)
+        if is_like:
+            post.likes.remove(request.user)
+        return HttpResponseRedirect(reverse('base:story', args=[str(pk)]))
+        # return HttpResponseRedirect(reverse('base:home'))
+
+class AddDislikeStory(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        post = Story.objects.get(pk=pk)
+        is_like = False
+        for like in post.likes.all():
+            if like == request.user:
+                is_like = True
+                break
+        if is_like:
+            post.likes.remove(request.user)
+        is_dislike = False
+        for dislike in post.dislikes.all():
+            if dislike == request.user:
+                is_dislike = True
+                break
+        if not is_dislike:
+            post.dislikes.add(request.user)
+        if is_dislike:
+            post.dislikes.remove(request.user)
+        return HttpResponseRedirect(reverse('base:story', args=[str(pk)]))
+        # return HttpResponseRedirect(reverse('base:home'))
 
 #! profile
 def Profile(request,pk):

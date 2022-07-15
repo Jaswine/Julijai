@@ -398,15 +398,6 @@ cursor: pointer;
     font-weight: bold;
     padding: 0 5%;
 }
-stories {
-    display: flex;
-    justify-content: start;
-    overflow-x: auto;
-    overflow-y: hidden;
-    margin: 0 0 0 4%;
-    position: relative;
-    width:100%;
-}
 .delete-post {
     margin: 20% 0 ;
     padding: 0 10%;
