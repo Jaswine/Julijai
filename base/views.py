@@ -262,8 +262,8 @@ class AddDislikeStory(LoginRequiredMixin, View):
 
 #! profile
 def Profile(request,pk):
-    user = User.objects.get(user=pk)
-    profileUser = ProfileUser.objects.get(user=pk)
+    user = User.objects.get(id=pk)
+    profileUser = ProfileUser.objects.get(id=pk)
     posts = Post.objects.all()[:3]
     comments = user.comment_set.all()
 

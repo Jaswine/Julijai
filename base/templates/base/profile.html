@@ -1,12 +1,15 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block title %}{{user.username}}{% endblock title %}
 
 {% block content %}
 <div class="profile">
   <div class="profile__header">
-    
-    <img src="{{profileUser.img.url}}" class ="profile__img" alt="">
+    {% if profileUser.img %}
+      <img src="{{profileUser.img.url}}" class ="profile__img" alt="">
+    {% else %}
+      <img src="{% static 'images/user.png' %}" class ="profile__img" alt="">
+    {% endif %}
     <div class="profile__name">{{user.username}}</div>
     <div class="profile__email">{{user.email}}</div>
     {% if request.user.is_authenticated %}
@@ -17,11 +20,7 @@
     <div class="profile__description">
       <div class="profile__left">
         <div class="profile__Date">
-          {% if profileUser.img %}
-            <img src="https://cdn-icons-png.flaticon.com/512/3176/3176395.png" class = "icon" alt="">
-          {% else %}
-            <img src="https://cdn-icons.flaticon.com/png/512/591/premium/591576.png?token=exp=1657523134~hmac=1610f6def28f26aa2f5d31d2cc626ec7" class = "icon" alt="">
-          {% endif %}
+          <img src="" alt="" class = "icon">
           <div class="profile__birthday">{{profileUser.birthday}}</div>
         </div>
           <div class="profile__about">{{profileUser.about}}</div>

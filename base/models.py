@@ -5,9 +5,7 @@ from base.validators import img__size, story_size
 from django.conf import settings
 
 class ProfileUser(models.Model):
-    #? id ?
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
-    # email = models.ForeignKey(, on_delete=models.SET_NULL, null=True)
     img = models.ImageField(null=True, blank=True, upload_to='static/images/',  validators=[img__size])
     birthday = models.DateField(blank=True, null=True)
     about = models.TextField(max_length=1000, null=True)
@@ -19,6 +17,7 @@ class ProfileUser(models.Model):
     telegram = models.URLField(null=True, blank=True)
     vk = models.URLField(null=True, blank=True)
     reddit  = models.URLField(null=True, blank=True)
+    github = models.URLField(null=True, blank=True)
 
     def __str__(self):
         return 'Profile for user {}'.format(self.user.username)
