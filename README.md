@@ -14,25 +14,25 @@ Hi everyone. The project is under active development. I am not writing the front
 <h3>Little Galery</h3>
 <br>
 
-![image](https://user-images.githubusercontent.com/82625479/177998201-c610f786-66f4-46c4-abf2-b4808c7426f9.png)
-
-<br>
-
-![image](https://user-images.githubusercontent.com/82625479/178001006-df46383d-f5cf-48aa-9591-ba5462f5ad18.png)
-
-<br>
-
-![image](https://user-images.githubusercontent.com/82625479/178001327-c2ffe6a8-ff11-4c1e-af8b-1928005933ca.png)
-
-<br>
-
-![image](https://user-images.githubusercontent.com/82625479/178737227-f21fb66b-1150-443d-89bf-e3f51b33f72c.png)
 
 
 <br>
 
-![image](https://user-images.githubusercontent.com/82625479/178002624-6537285b-9c7d-4366-8066-a62ae0a3f872.png)
+
+
+<br>
+
+
+
+<br>
+
+
+
+
+<br>
+
+
 
 <br><br>
 
-![image](https://user-images.githubusercontent.com/82625479/178003371-2967acb2-0a47-424d-bbd1-e9dbd3010aa8.png)
+
