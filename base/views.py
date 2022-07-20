@@ -48,8 +48,7 @@ def registersUser(request):
             new_user.save()
             profile = ProfileUser.objects.create(user=new_user)
             login(request, new_user)
-            return redirect('base:create-profile')
-            # return redirect('base:create-profile', pk=new_user.id)
+            return redirect('base:change-profile', pk=new_user.id)
             # return redirect('base:home')
         else:
             messages.error(request, 'Ошибка при регистрации аккаунта...')
@@ -271,31 +270,14 @@ def Profile(request,pk):
     return render(request, 'base/profile.html', context)
 
 @login_required(login_url='base:login')
-def createProfile(request):
-    # user = User.objects.get(id=pk)
-    UserForm = UserEditForm()
-    ProfileForm = ProfileEditForm()
-
-    if request.method == 'POST':
-        UserForm = UserEditForm(request.POST)
-        ProfileForm = ProfileEditForm(request.POST)
-        if ProfileForm.is_valid():
-            UserForm.save()
-            ProfileForm.save()
-            return redirect('base:home')
-
-    context = {'UserForm': UserForm,'ProfileForm': ProfileForm}
-    return render(request, 'base/profileForm.html', context)
-
-@login_required(login_url='base:login')
 def updateProfile(request,pk):
     user = User.objects.get(id=pk)
     UserForm = UserEditForm(instance=user)
-    ProfileForm = ProfileEditForm(instance=user)
+    ProfileForm = ProfileEditForm(instance=user.profileuser)
 
     if request.method == 'POST':
         UserForm = UserEditForm(request.POST, instance=user)
-        ProfileForm = ProfileEditForm(request.POST, instance=user)
+        ProfileForm = ProfileEditForm(request.POST, instance=user.profileuser)
         if ProfileForm.is_valid():
             UserForm.save()
             ProfileForm.save()

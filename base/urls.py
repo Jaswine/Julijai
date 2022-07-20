@@ -26,6 +26,5 @@ urlpatterns = [
     path('<str:pk>/likeStory/', views.AddDislikeStory.as_view(), name='dislike__story'),
 
     path('profile/<str:pk>/', views.Profile, name='profile'),
-    path('create-profile', views.createProfile, name='create-profile'),
     path('change-profile/<str:pk>/', views.updateProfile, name='change-profile'),
 ]
