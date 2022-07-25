@@ -30,10 +30,6 @@ Hi everyone. The project is under active development. I am not writing the front
 
 <br>
 
-![image](https://user-images.githubusercontent.com/82625479/180743698-1f399f7d-bf8d-4f76-8cd1-3198d95db8a5.png)
-
-<br>
-
 ![image](https://user-images.githubusercontent.com/82625479/180744069-4d1890c2-9930-4146-871a-52946dc6cb73.png)
 
 <br>
