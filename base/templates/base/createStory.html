@@ -8,7 +8,7 @@
         <div class="create__header">
             <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'images/back.svg' %}" alt="" class="icon icon-mar">Вернуться</a>
         </div>
-        <h2>Создать Пост</h2>
+        <h2>Создать Story</h2>
         <div class="create__former">
             {% csrf_token %}
             {{form.media}}
