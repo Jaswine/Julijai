@@ -34,8 +34,10 @@ Hi everyone. The project is under active development. I am not writing the front
 
 <br>
 
-![image](https://user-images.githubusercontent.com/82625479/180051664-4ba0d78a-dacc-404c-a0d7-560e5ca5386f.png)
+![image](https://user-images.githubusercontent.com/82625479/180744069-4d1890c2-9930-4146-871a-52946dc6cb73.png)
 
 <br>
 
+![image](https://user-images.githubusercontent.com/82625479/180744195-b88ae87a-c421-4c3d-97ad-bb987adee683.png)
 
+<br>
