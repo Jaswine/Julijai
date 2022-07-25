@@ -1,4 +1,5 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block title %}
     {% if page == 'login' %}
@@ -10,20 +11,34 @@
 
 {% block content %}
 {% if page == 'login' %}
-<form class = "login__form" method="POST">
-    {% csrf_token %}
-    <input type = "text" name="username" placeholder="логин...">
-    <input type = "password" name = "password" placeholder="пароль...">
-    <input type="submit" class = "btn" value = "войти">
-    <p>Хотите создать новый аккаунт?<a class = "link" href = "{% url 'base:register' %}">Register</a></p>
-</form>
+<div class="create">
+    <form method = "POST" class = "create-form" action = "." enctype="multipart/form-data">
+        <div class="create__header">
+            <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'images/back.svg' %}" alt="" class="icon icon-mar">Вернуться</a>
+        </div>
+        <h2>Войти</h2>
+
+        {% csrf_token %}
+        <input type = "text" name="username" placeholder="логин...">
+        <input type = "password" name = "password" placeholder="пароль...">
+        <input type="submit" class = "btn" value = "войти">
+        <p>Хотите создать новый аккаунт?<a class = "link" href = "{% url 'base:register' %}">Register</a></p>
+    </form>
+</div>
 {% else %}<!---->
-<form class = "login__form" method="POST">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" class = "btn" value = "зарегестрироваться">
-    <p>У вас уже есть аккаунт?<a class = "link" href = "{% url 'base:login' %}">Войти</a></p>
-</form>
+<div class="create">
+    <form method = "POST" class = "create-form" action = "." enctype="multipart/form-data">
+        <div class="create__header">
+            <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'images/back.svg' %}" alt="" class="icon icon-mar">Вернуться</a>
+        </div>
+        <h2>Регестрация</h2>
+
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" style="max-width: 280px !important" class = "btn btn-max" value = "зарегестрироваться">
+        <p>У вас уже есть аккаунт?<a class = "link" href = "{% url 'base:login' %}">Войти</a></p>
+    </form>
+</div>
 {% endif %}
 
 <style>

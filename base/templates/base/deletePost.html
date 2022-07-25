@@ -1,14 +1,9 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block title %}Удаление - {{post.name}} {% endblock title %}
 
 {% block content %}
-<form action="" method="POST"  class = "delete-post">
-    {% csrf_token %}
-    <h2>Удалить?</h2>
-    <a href="{{request.META.HTTP_REFERER}}" class = "btn">Нет, я передуматьс</a>
-    <input type="submit" value="Удалить" style="margin:  0 .5%" class = "btn btn-red">
-</form>
 <style>
     .delete-post {
         margin: 20% 0 ;
@@ -16,6 +11,25 @@
     } 
     .btn {
         max-width: 200px;
+    }
+</style>
+<div class="create">
+    <form method = "POST" class = "create-form" action = "." enctype="multipart/form-data">
+        <div class="create__header">
+            <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'images/back.svg' %}" alt="" class="icon icon-mar">Вернуться</a>
+        </div>
+        <div class="create__former">
+            {% csrf_token %}
+            <h2>Вы действительно хотите это удалить?</h2>
+            <div class="create__btn">
+                <input type="submit" value="Удалить" style="margin:  0 .5%" class = "btn btn-red">
+            </div>
+        </div>
+    </form>
+</div>
+<style>
+    .btn {
+        max-width: 150px !important;
     }
 </style>
 {% endblock content %}

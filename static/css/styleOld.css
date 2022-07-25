@@ -1,0 +1,244 @@
+.intro {
+    position: relative;
+    width: 100%;
+    overflow-X: hidden;
+    height: 100vh;
+    overflow-Y: hidden;
+}
+.intro__item {
+    position: relative;
+    height: 100vh;
+}
+.intro__phone {
+    position: absolute;
+    height: 100vh;
+    transform: rotate(45deg);
+    top: -20%;
+    right: -50%;
+}
+
+.intro__phone img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: 140px;
+    max-height: 280px;
+    min-width: 140px;
+    min-height: 280px;
+    margin: .6rem;
+    filter: brightness(70%);
+}
+.intro__descusion {
+    z-index: 20;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.intro__desc {
+    z-index: 20;
+    max-width: 60%;
+    font-size: 1.6rem;
+}
+.intro__h{
+    font-size: 3.2rem;
+    
+}
+.intro__low {
+    position: absolute;
+    bottom: 5%;
+    right: 50%;
+    left: 48% ;
+    background-color: rgb(0,0,0);
+    width: 60px;
+    height: 60px;
+    border: none;
+    z-index: 90;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all .4s linear;
+}
+.intro__low:hover {
+    background-color: #fff; 
+}
+.intro__low:hover .intro__low__two  {
+    background-color: black;
+}
+.intro__low:hover .intro__low__one  {
+    background-color: black;
+} 
+.intro__low span {
+    display: block;
+    content: "";
+    background-color: #fff;
+    width: 20px;
+    height: 4px;
+    margin: -4.6%;
+}
+.intro__low__two {
+    transform: rotate(-45deg);
+}
+.intro__low__one {
+    transform: rotate(45deg);
+}
+
+.about {
+    width: 100%;
+    padding: 0 5%;
+    position: relative;
+}
+.about__inner {
+    width: 100%;
+    position: relative;
+   
+}
+.about__line {
+    display: block;
+    position: absolute;
+    right: 49%;
+    left: 49%;
+    width: 3px;
+    height: 88%;
+    min-height: 200px;
+    background-color: rgb(254,254,254,.3);
+}
+@media screen and (max-width: 600px) {
+    * {
+        font-size: 1rem;
+    }
+    .header__none {
+        display: none;
+    }
+    .header__name {
+        font-size: 1.8rem;
+    }
+    .intro__h {
+        font-size: 2.4rem;
+    }
+    .intro__desc {
+        max-width: 80%;
+        top: 50%;
+        position: absolute;
+    }
+    .about__missing__desc {
+        font-size: 1rem;
+    }
+    .about__text {
+        max-width: 100%;
+        padding: 0 2%;
+        font-size: 1rem;
+    }
+    .post {
+        box-shadow: 10px 10px 1px #282828;
+        transform: translate(-10px, -10px );
+        max-width: 100%;
+        min-width: 100%;
+        max-height: 100%;
+        min-height: 100%;
+        height: 100%;
+        width: 100%;
+    }
+    .pre__post {
+        margin: 5% 0;
+    }
+    .about__missing__h {
+        font-size: 2.4rem;
+    }
+    .about__line {
+        display: none;
+    }
+    .about__block {
+        flex-direction: column;
+    }
+    .about__image {
+        max-width: 100%;
+        max-height: 100%;
+        margin: 5% 0;
+    }
+    .about__text {
+        max-width: 100%;
+        padding: 0 2%;
+    }
+}
+.about__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5%;
+    width: 100%;
+    margin: 5% 0 ;
+}
+.about__image {
+    width: 100%;
+    height: 100%;
+    max-width: 44%;
+    max-height: 44%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.about__image:hover .img__span {
+    top: 10px;
+    left: 10px;
+}
+.about__image:hover .img__span__spel {
+    left: -10px;
+}
+.about__image img {
+    position: relative;
+    z-index: 1;
+    filter: brightness(90%);
+}
+.img__span {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: #fff;
+    background: linear-gradient(to bottom, #00FB00, #AA45FF);
+    z-index: -1;
+}
+.img__span__spel {
+    left: -5px;
+}
+.about__text {
+    max-width: 50%;
+    padding: 0 5%;
+    font-size: 1.4rem;
+}
+.about__mision {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin : 5%;
+}
+.about__missing__desc {
+    max-width: 700px;
+    text-align: center;
+    font-size: 1.4rem;
+}
+.about__missing__h {
+    font-size: 2.7rem;
+    margin: .5rem 0;
+    color: transparent;    
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(to bottom, #00FB00, #AA45FF);
+    font-weight: bold;
+}
+.none {
+    display: none;
+}

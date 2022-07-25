@@ -6,177 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styleOld.css' %}">
+    <link rel="stylesheet" href="{% static 'css/story.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    
+
     <title>{% block title %}{% endblock title %}</title>
 </head>
 <body>
-    {% autoescape off %}
-        {% include 'header.html' %}
+    {% include 'header.html' %}
 
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li{% if message.tags %} style='color: coral;' class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} style='color: coral;' class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
-        {% block content %}{% endblock content %}
-    {% endautoescape %}
-    <style>
-        .after-profile {
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            gap: 1% ;
-            padding: 0 5% ;
-            margin: 2% 0;
-        }
-        .profile {
-            margin: 7% 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .profile__img {
-            max-width: 100px;
-            max-height: 100px;
-            width: 100px;
-            height: 100px;
-            min-width: 100px;
-            min-height: 100px;
-            object-fit: cover;
-            border: 3px solid aliceblue;
-            border-radius: 50%;
-            /* box-shadow: 1px 1px 5px aliceblue; */
-            box-shadow: 
-                4px -4px 6px #00fb00,
-                -3px 3px 5px #aa45ff;
-        }
-        .profile__header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .profile__name {
-            font-size: 1.6rem;
-            margin: .6% 0;
-            text-shadow: 
-                4px -4px 6px #00fb00,
-                -3px 3px 5px #aa45ff;
-        }
-        .profile__email {
-            font-size: 1.2rem;
-        }
-        .icon-max {
-            width: 50px;
-            height: 50px;
-            border-radius: 30%
-        }
-        .icon-max:hover {
-            box-shadow: 
-                4px -4px 6px #00fb00,
-                -3px 3px 5px #aa45ff;
-        }
-        .icon {
-            width: 1.2rem;
-            height: 1.2rem;
-        }
-        .profile__description {
-            display: grid;
-            grid-template-columns:2fr 1fr;
-            padding: 0 10%;
-            margin: 2% 0;
-            width: 100%;
-        }
-        .profile__left {
-            display: flex;
-            flex-direction: column;
-            justify-content: start;
-            width: 100%;
-            min-width: 40vw;
-        }
-        .profile__right {
-            display: flex;
-            justify-content: flex-end;
-            gap: 1rem;
-            align-items: center;
-        }
-        .profile__Date {
-            display: flex;
-            gap: .3rem;
-            align-items: center;
-        }
-        .profile__birthday {
-            font-size: 1.2rem;
-        }
-        .profile__about {
-            font-size: 1.1rem;
-        }
-        .topic {
-            padding: .6%;
-            margin: .6% 0;
-            font-size: 1.26rem;
-        }
-        .topic:hover {
-            background-color: rgb(254,254,254,.1);
-        }
-        .article__center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .both {
-            margin: 0 6%;
-            font-weight: 900;
-        }
-        .likes {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .like {
-            width: 50px;
-            height: 50px;
-        }
-        .like-mini {
-            width: 34px;
-            height: 34px;
-            margin: 0 .4rem;
-            border-radius: 30%;
-            box-shadow: 1px 1px 5px black;
-        }
-        .like-mini:hover {
-            box-shadow: 
-                inset -2px -2px 5px #fff,
-                2px 2px 5px #fff;
-        }
-        button {
-            background-color: transparent;
-            text-align: center;
-            border: none;
-        }
-        .likes {
-            margin: 0 1%;
-        }
-        span {
-            color: aliceblue;
-        }
-        .form__links {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-        .likes__block {
-            display: flex;
-            justify-content: start;
-            align-items: center;
-        }
-    </style>
+    {% block content %}{% endblock content %}
+    
+    <script src="{% static 'scripts/app.js' %}"></script>
+    <script src="{% static 'scripts/story.js' %}"></script>
 </body>
 </html>

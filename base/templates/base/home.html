@@ -3,6 +3,67 @@
 {% block title %}Julijai ITHub{% endblock title %}
 
 {% block content %}
+<div class = "intro">
+    <div class = "intro__item">
+        <div class = "intro__phone"></div>
+        <div class = "intro__descusion">
+            <div class = "intro__desc">
+                <div class = "intro__h">Our Mission</div>
+                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In metus vulputate eu scelerisque.</div>
+            </div>
+            <div class = "intro__desc" style="opacity: 0">
+                <h3>Our Ideas</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In metus vulputate eu scelerisque.</p>
+            </div>
+            <div class = "intro__desc" style="opacity: 0">
+                <h3>Our Capabilities</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In metus vulputate eu scelerisque.</p>
+            </div>
+            <a href = "#about" class = "intro__low">
+                <span class = "intro__low__one"></span>
+                <span class = "intro__low__two"></span>
+            </a>
+        </div>
+    </div>
+</div>
+ <div class = "about" id = "about">
+    <span class = "about__line"></span>
+    <div class = "about__inner">
+        <div class = "about__block">
+            
+            <div class=  "about__image">
+                <img alt="" src = "https://images.pexels.com/photos/3799832/pexels-photo-3799832.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                <span class = "img__span"></span>
+            </div>
+            <div class = "about__text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placerat duis ultricies lacus sed.
+            </div>
+        </div>
+        <div class = "about__block">
+            <div class = "about__text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placerat duis ultricies lacus sed.
+            </div>
+            <div class=  "about__image">
+                <img alt="" src = "https://images.pexels.com/photos/5717430/pexels-photo-5717430.jpeg?auto=compress&cs=tinysrgb&w=600">
+                <span class = "img__span img__span__spel"></span>
+            </div>
+        </div>
+        <div class = "about__block">
+            <div class=  "about__image">
+                <img alt="" src = "https://images.pexels.com/photos/1231230/pexels-photo-1231230.jpeg?auto=compress&cs=tinysrgb&w=600">
+                <span class = "img__span"></span>
+            </div>
+            <div class = "about__text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placerat duis ultricies lacus sed.
+            </div>
+        </div>
+    </div>
+    <div class = "about__mision">
+        <div class = "about__missing__h">OUR Missing</div>
+        <div class = "about__missing__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placerat duis ultricies lacus sed.</div>
+    </div>
+</div>
+
 <!-- ! Stories -->
 <storiess>
     <div class="stores__back">
@@ -28,21 +89,4 @@
     </div>
 </div>
 </div>
-<style>
-    .stores__back {
-        z-index: 100;
-    }
-    storiess {
-        display: flex;
-        justify-content: start;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        position: relative;
-        width:100%;
-        min-width:300px;
-        margin: 6.6rem 0 0 1rem;
-        gap: 1rem;
-        padding: 0 2%;
-    }
-</style>
 {% endblock content %}

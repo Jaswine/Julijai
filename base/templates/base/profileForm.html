@@ -1,17 +1,25 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block title %}Изменить Профиль{% endblock title %}
 
 {% block content %}
-<form class="login__form" method='POST' action="{% url 'base:change-profile' user.id %}" enctype="multipart/form-data">
-  {% csrf_token %}
+<div class="create">
+  <form method = "POST" class = "create-form" action="{% url 'base:change-profile' user.id %}" enctype="multipart/form-data">
+      <div class="create__header">
+          <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'images/back.svg' %}" alt="" class="icon icon-mar">Вернуться</a>
+      </div>
+      <h2>Создать Пост</h2>
+      <div class="create__former" padding="0 2%">
+        {% csrf_token %}
 
-  {{ProfileForm.media}}
-  {{UserForm.as_p}}
-  {{ProfileForm.as_p}}
-
-  <input type="submit" class="btn btn-min" value="Сохранить">
-</form>
+        {{ProfileForm.media}}
+        {{UserForm.as_p}}
+        {{ProfileForm.as_p}}
+      </div>
+      <input type = "submit" class = "btn btn-min btn-save" value='Cохранить'>
+  </form>
+</div>
 <style>
   .btn-min {
     max-width: 200px;

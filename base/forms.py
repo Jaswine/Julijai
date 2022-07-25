@@ -11,7 +11,7 @@ class UserEditForm(ModelForm):
 class ProfileEditForm(ModelForm):
     class Meta:
         model = ProfileUser
-        fields = ['birthday', 'img', 'about']
+        fields = ['birthday', 'img', 'about','twitter','facebook','instagram','telegram','vk','reddit','github']
 
 class PostForm(ModelForm):
     class Meta:

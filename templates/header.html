@@ -1,13 +1,18 @@
+{% load static %}
 <header>
+
     <a href="/" class = "header__logo">
         <h2 class = "header__name">JYLYJAI</h2>
         <span class = "header__desc">ITHUB</span>
     </a>
+
     <div class = "header__right">
+        
         <form action="{% url 'base:posts' %}" method="GET" class = "search">
             <input type="search" class = "search__field" name='q' placeholder="Enter...">
-            <input type="submit" value = 'search' class = 'search-btn'>
+            <button title="search" class=" btn-search"><img src="{% static 'images/search__white.png' %}" class="icon search__icon" alt=""></button>
         </form>
+
         {% comment %} <div class = "header__menu">
             <div class = "header__block">
                 <span class = "header__one"></span>
@@ -16,43 +21,26 @@
             <div class = 'header__none'>menu</div>
         </div> {% endcomment %}
         {% if request.user.is_authenticated %}
-        <a class = 'btn' href= "{% url 'base:logout' %}">logout</a>
-        <a href="{% url 'base:profile' request.user.id %}"><h2>{{request.user}}</h2></a>
+            {% if base.profileuser.img %}
+                <img class="header__avatar" src="{{base.profileuser.img.url}}" alt="">
+            {% else %}
+                <img class="header__avatar" src="{% static 'images/user.png' %}" alt="avatar">
+        {% endif %}
+        <a href="{% url 'base:profile' request.user.id %}"><h3 class="header__user" class="">{{request.user}}</h3></a>
+
+        <div class = "header__search header__add">
+            <div class = "header__create-post header__create-post__rotate">&#x2771;</div>
+            <div class = "header__navbar">
+                {% if request.user.is_superuser %}
+                <a href = "{% url 'base:create-post' %}" class = "btn btn-max btn-shadow">create post</a>
+                <a href="{% url 'base:create-story' %}" class = "btn btn-max btn-shadow">create stories</a>
+                {% endif %}
+                <a href = "{% url 'base:logout' %}" class = "btn btn-max btn-shadow">logout</a>
+            </div>
+        </div>
+
         {% else %}
         <a class = 'btn' href= "{% url 'base:login' %}">login</a>
         {% endif %}
-        
-        {% if request.user.is_authenticated %}
-            {% if request.user.is_superuser %}
-                <div class = "header__search header__add">
-                    <div class = "header__create-post">+</div>
-                    <div class = "header__navbar">
-                        <a href = "{% url 'base:create-post' %}" class = "btn btn-max btn-shadow">create post</a>
-                        <a href="{% url 'base:create-story' %}" class = "btn btn-max btn-shadow">create stories</a>
-                    </div>
-                </div>
-            {% endif %}
-        {% endif %}
     </div>
 </header>
-<style>
-    .btn-max {
-        padding: .8rem .4rem;
-    }
-    .search {
-        display: flex;
-        flex-direction: row;
-    }
-    .search-btn {
-        background-color: transparent;
-        color: aliceblue;
-        border: 3px solid aliceblue;
-        padding: .4% 0;
-        max-width: 80px;
-        cursor: pointer;
-    }
-    .search-btn:hover {
-        border: 3px solid #00fb00;
-        color : #00fb00;
-    }
-</style>

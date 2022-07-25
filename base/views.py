@@ -82,6 +82,7 @@ def posts(request):
 def post(request,pk):
     post = Post.objects.get(id=pk)
     comments = post.comment_set.all().order_by('-created')
+    posts = Post.objects.all()[:4]
     if request.method == 'POST':
         comment = Comment.objects.create(
             user = request.user,
@@ -91,7 +92,7 @@ def post(request,pk):
         return redirect('base:post', pk=post.id)
     
 
-    context = {'post': post, 'comments': comments}
+    context = {'post': post, 'comments': comments,'posts':posts}
     return render(request, 'base/post.html', context)
 
 # ! post

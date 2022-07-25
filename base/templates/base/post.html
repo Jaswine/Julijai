@@ -11,11 +11,11 @@
         <h1>{{post.name}}</h1>
         <span class = "line"></span>
         <div class="article__text">
-            {{post.text}}
+            {% autoescape off %}{{post.text}}{% endautoescape %}
         </div>
         <div class="article__nav">
-            <p>#{{post.tag}}</p>
-            <p>{{post.updated}}</p>
+            <a class="article__tag" href="{% url 'base:posts'  %}?q={{post.tag.name}}" >#{{post.tag}}</a>
+            <p>{{post.updated|timesince}}</p>
         </div>
 
         <div class="likes"> 
@@ -58,14 +58,21 @@
             <div class="form__links"><!--TODO Share on twitter, reddit, telegram and other social media -->
                 {% post_to_twitter "Новый пост: '{{post.name}}' на сайте Julijai IT-Hub. Хотите посмотреть? го - " object_or_url '<img class="like-mini" src="../../../static/images/twitter__white.png" >'  %}
                 {% post_to_facebook object_or_url '<img class="like-mini" src="../../../static/images/facebook__white.png">' %}
-                {% post_to_reddit  "Новый пост: '{{post.name}}' на сайте Julijai IT-Hub. Хотите посмотреть? " object_or_url '<img class="like-mini" src="../../../static/images/reddit__white.png>' %}
+                {% post_to_reddit  "Новый пост: '{{post.name}}' на сайте Julijai IT-Hub. Хотите посмотреть? " object_or_url '<img class="like-mini" src="../../../static/images/reddit__white.png">' %}
                 {% post_to_telegram    "Новый пост: '{{post.name}}' на сайте Julijai IT-Hub. Хотите посмотреть? го - " object_or_url '<img class="like-mini" src="../../../static/images/telegram__white.png">' %}
                 {% post_to_whatsapp object_or_url '<img class="like-mini" src="../../../static/images/whatsapp__white.png">'  %}
             </div>
         </div>
+        <div class="article__comment ">
+            <h2>Последние статьи</h2>
+            <hr>
+            <div class="article__comment-post"><!--TODO: posts-->
+                {% include 'base/components/post__component.html' %}
+            </div>
+        </div>
  
         <div class="article__comment"><!--TODO: comments -->
-            <h2>Comments</h2>
+            <h2>Комментарии</h2>
             <hr>
             {% if request.user.is_authenticated %}<!--TODO: create comment -->
                 <form class = "comment__form" action="" method="POST">
@@ -74,23 +81,35 @@
                 </form>
             {% endif %}
             <div class="comment__lists"> <!--TODO: return all comments -->
+
                 {% for comment in comments %}
                     <div class="comment__block">
-                        <div class ="article__nav">
-                            <a href="{% url 'base:profile' comment.user.id %}"><h3>@{{comment.user}}</h3></a>
-                            <p>{{comment.updated}}</p>
+                        <div class ="comment__nav">
+                            <div class="comment__right__nav">
+                                
+                                <a href="{% url 'base:profile' comment.user.id %}">
+                                    {% if comment.profileuser.img %}
+                                        <img class="comment__avatar" src="{{comment.profileuser.img.url}}" alt="{{comment.profileuser.img}}">
+                                    {% else %}
+                                        <img class="comment__avatar" src="{% static 'images/user.png' %}" alt="avatar">
+                                    {% endif %}
+                                </a>
+                                <a href="{% url 'base:profile' comment.user.id %}"><h3>@{{comment.user}}</h3></a>
+                                <p>{{comment.updated|timesince}}</p>
+                            </div>
+                            <div class="comment__left__nav">
+                                {% if request.user == comment.user %}
+                                <a href="{% url 'base:comment-delete' comment.id %}" class=""><img src="{% static 'images/close.svg' %}" class="icon" alt=""></a>
+                                {% endif %}
+                            </div>
                         </div>
                         <div class = "article__body">{{comment.body}}</div>
-                        {% if request.user == comment.user %}
-                            <div class="article__nav">
-                                <div class=""></div>
-                                <a href="{% url 'base:comment-delete' comment.id %}" class="btn btn-red">Delete</a>
-                            </div>
-                        {% endif %}
                     </div>
                 {% endfor %}
+
             </div>
         </div>
     </div>
 </div>
+
 {% endblock content %}
