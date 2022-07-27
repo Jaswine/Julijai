@@ -14,32 +14,26 @@ Hi everyone. The project is under active development. I am not writing the front
 <h3>Little Galery</h3>
 <br>
 
-![image](https://user-images.githubusercontent.com/82625479/180049841-bdbbe1ee-8696-48fe-bc5a-7a2efb693b6c.png)
-
-
-<br>
-
-![image](https://user-images.githubusercontent.com/82625479/180049921-45925359-cd97-422c-9ca4-6d5e119694e7.png)
-
+![image](https://user-images.githubusercontent.com/82625479/180739338-5a7f2a56-46fd-48a9-89d6-1afe8538fe4d.png)
 
 <br>
 
-![image](https://user-images.githubusercontent.com/82625479/180049993-2079dbed-fbe5-4506-aeeb-a974578120e4.png)
-
-
-<br>
-
-![image](https://user-images.githubusercontent.com/82625479/180050140-e95039ff-1b95-4828-bc47-2ec8408009d4.png)
-
+![image](https://user-images.githubusercontent.com/82625479/180742946-9dd705e5-6449-47d4-a0eb-849b7ad03ec3.png)
 
 <br>
 
-![image](https://user-images.githubusercontent.com/82625479/180050233-5e4d6eaa-3ac3-4a15-bd4f-5f68ff1a41cb.png)
+![image](https://user-images.githubusercontent.com/82625479/180743061-53fd223c-046f-4758-b46a-38d88af33c82.png)
 
 <br>
 
-![image](https://user-images.githubusercontent.com/82625479/180051664-4ba0d78a-dacc-404c-a0d7-560e5ca5386f.png)
+![image](https://user-images.githubusercontent.com/82625479/180743421-944c5039-736f-4486-8148-81933ef0d575.png)
 
 <br>
 
+![image](https://user-images.githubusercontent.com/82625479/180744069-4d1890c2-9930-4146-871a-52946dc6cb73.png)
 
+<br>
+
+![image](https://user-images.githubusercontent.com/82625479/180744195-b88ae87a-c421-4c3d-97ad-bb987adee683.png)
+
+<br>
