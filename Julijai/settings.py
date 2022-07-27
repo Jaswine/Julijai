@@ -1,4 +1,19 @@
 """
+*_________________INSTRUCTION__________________
+! \-O-/ !!!!!!!!!Attention!!!!!!!!! pleas \-O-/
+! If you create a profile through the console,
+! then do not forget to go to the admin panel and, more precisely, to Profile users and add your user there, the main thing is to select the name of your user in the first User form, everything else is not important
+
+? Why should I do this? I'm lazy...
+
+TODO: If you don’t do this, then the celiks that will be added through the site will have a lower id (since your profile is not there (when you register on the site, everything is automatically done there, as you register, before you are thrown to the profile page, your the name goes to the profile form, so everything works there :] ) ) and the least that comes out of it is jumping on profiles, Regarded as Kolya, and Olya in the profile, or even an error :/
+
+!!!! SIGN UP!!!!!
+
+? I want to make SOMEONE (not me) able to add posts/story/tags but not through the admin panel, but on the site itself?
+
+TODO: just give this user the status of a super user in the admin panel and that's it, voila, he can freely add / edit posts / stories.
+
 *__________________ИНСТРУКЦИИ___________________
 
 ! \-O-/ !!!!!!!!!ВНИМАНИЕ!!!!!!!!! плиз \-O-/
@@ -12,7 +27,7 @@ TODO: Если вы этого не сделаете, то челики кото
 !!!!    ЗАРЕГАЙТЕСЬ !!!!!
 //and let me sleap
 
-? Я хочу сделать так что бы КТО-ТО мог добавлять посты/story/теги но не через админку, а на самом сайте ?
+? Я хочу сделать так что бы КТО-ТО(не я) мог добавлять посты/story/теги но не через админку, а на самом сайте ?
 
 TODO: просто дайте этому пользователю статус супер юзера в админке и все, вуаля, он свободно может добавлять/редактировать посты/сторисы.
 

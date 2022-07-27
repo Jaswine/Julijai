@@ -86,6 +86,7 @@ def post(request,pk):
     if request.method == 'POST':
         comment = Comment.objects.create(
             user = request.user,
+            profileuser = request.user.profileuser,
             post = post,
             body = request.POST.get('body')
         )
@@ -278,7 +279,7 @@ def updateProfile(request,pk):
 
     if request.method == 'POST':
         UserForm = UserEditForm(request.POST, instance=user)
-        ProfileForm = ProfileEditForm(request.POST, instance=user.profileuser)
+        ProfileForm = ProfileEditForm(request.POST, request.FILES, instance=user.profileuser)
         if ProfileForm.is_valid():
             UserForm.save()
             ProfileForm.save()
@@ -298,3 +299,27 @@ def commentDelete(request,pk):
 
     context = {'post':comment}
     return render(request, 'base/deletePost.html', context)   
+
+#!Topic
+@login_required(login_url='base:login')
+def createTag(request):
+    tags = Tag.objects.all()
+    if request.method == 'POST':
+        tag = Tag.objects.create(
+            name = request.POST.get('name')
+        )
+        # return redirect('base:home')
+
+    context = {'tags':tags}
+    return render(request,'base/createTopic.html', context)
+
+@login_required(login_url='base:login')
+def deleteTag(request,pk):
+    tag = Tag.objects.get(id=pk)
+
+    if request.method == 'POST':
+        tag.delete()
+        return redirect('base:create-tag')
+
+    context = {'tag':tag}
+    return render(request, 'base/deletePost.html', context)

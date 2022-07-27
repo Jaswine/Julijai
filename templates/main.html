@@ -25,6 +25,15 @@
     {% endif %}
 
     {% block content %}{% endblock content %}
+
+    <style>
+        .about__image img {
+            width: 100%;
+        }
+        .intro__phone img {
+            filter: brightness(50%);
+        }
+    </style>
     
     <script src="{% static 'scripts/app.js' %}"></script>
     <script src="{% static 'scripts/story.js' %}"></script>

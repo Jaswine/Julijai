@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}Создние НовоЙ Темы{% endblock title %}
+{% block content %}
+<div class="create">
+    <form method = "POST" class = "create-form" action = "." enctype="multipart/form-data">
+        <div class="create__header">
+            <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'images/back.svg' %}" alt="" class="icon icon-mar">Вернуться</a>
+        </div>
+        <h2>Создать Тему</h2>
+        <div class="create__former">
+            {% csrf_token %}
+            <input type="text" name='name'>
+        </div>
+        <input type = "submit" class = "btn btn-min btn-save" value='Cохранить'>
+
+        <div class="all__tags">
+          <h2>ALL TAGS</h2>
+          {% for tag in tags %}
+          <div class="tag">
+            <a href="{% url 'base:posts'  %}?q={{tag.name}}"><h3>{{tag.name}}</h3></a>
+            <a href="{% url 'base:delete-tag' tag.id %}" class=""><img src="{% static 'images/close.svg' %}" class="icon" alt=""></a>
+          </div>
+          {% endfor %}
+        </div>
+    </form>
+</div>
+<style>
+    .btn {
+      max-width: 180px;
+    }
+    .tag {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin: .6rem 0;
+      min-width: 100%;
+    }
+    .all__tags {
+      width: 100%;
+      padding: 0 10%;
+    }
+    .all__tags h2 {
+      text-align: center;
+      margin-top: 1rem;
+    }
+</style>
+{% endblock content %}

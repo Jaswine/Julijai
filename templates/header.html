@@ -21,7 +21,7 @@
             <div class = 'header__none'>menu</div>
         </div> {% endcomment %}
         {% if request.user.is_authenticated %}
-            {% if base.profileuser.img %}
+            {% if base.profileuser %}
                 <img class="header__avatar" src="{{base.profileuser.img.url}}" alt="">
             {% else %}
                 <img class="header__avatar" src="{% static 'images/user.png' %}" alt="avatar">
@@ -34,6 +34,7 @@
                 {% if request.user.is_superuser %}
                 <a href = "{% url 'base:create-post' %}" class = "btn btn-max btn-shadow">create post</a>
                 <a href="{% url 'base:create-story' %}" class = "btn btn-max btn-shadow">create stories</a>
+                <a href="{% url 'base:create-tag' %}" class = "btn btn-max btn-shadow">create tag</a>
                 {% endif %}
                 <a href = "{% url 'base:logout' %}" class = "btn btn-max btn-shadow">logout</a>
             </div>

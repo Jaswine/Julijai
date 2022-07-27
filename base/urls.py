@@ -12,6 +12,9 @@ urlpatterns = [
     path('posts/', views.posts, name='posts'),
     path('posts/<str:pk>/', views.post, name='post'),
 
+    path('create-tag/',views.createTag,name='create-tag'),
+    path('delete-tag/<str:pk>/',views.deleteTag, name='delete-tag'),
+
     path('create-post/', views.createPost, name = 'create-post'),
     path('delete-post/<str:pk>/',views.deletePost, name = 'delete-post'),
     path('update-post/<str:pk>/', views.updatePost, name='update-post'),
