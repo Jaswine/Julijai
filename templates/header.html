@@ -21,8 +21,8 @@
             <div class = 'header__none'>menu</div>
         </div> {% endcomment %}
         {% if request.user.is_authenticated %}
-            {% if base.profileuser %}
-                <img class="header__avatar" src="{{base.profileuser.img.url}}" alt="">
+            {% if request.user.profileuser.img %}
+                <img class="header__avatar" src="{{request.user.profileuser.img.url}}" alt="">
             {% else %}
                 <img class="header__avatar" src="{% static 'images/user.png' %}" alt="avatar">
         {% endif %}
@@ -43,5 +43,12 @@
         {% else %}
         <a class = 'btn' href= "{% url 'base:login' %}">login</a>
         {% endif %}
+        <style>
+            .header__avatar {
+                width: 45px;
+                height: 45px;
+                min-width: 45px;
+            }
+        </style>
     </div>
 </header>
