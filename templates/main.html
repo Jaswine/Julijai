@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Oswald:wght@200;300;400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'libres/node_modules/swiper/swiper-bundle.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/story.css' %}">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'css/styleOld.css' %}">
+    <link rel='stylesheet' href="{% static 'css/slider.css' %}">
 
     <title>{% block title %}{% endblock title %}</title>
 </head>
@@ -33,9 +36,218 @@
         .intro__phone img {
             filter: brightness(50%);
         }
+        .about__line {
+            height: 92%;
+        }
+        @media screen and (max-width:600px) {
+            .btn {
+                padding: 0.4rem 1.2rem;
+                font-size: 1.1rem;
+            }
+            .create {
+                position: relative;
+                top: 100px;
+            }
+            .create__fields {
+                margin: 5% 0;
+            }
+            .create__header {
+                margin: 0 0 5% 0%
+            }
+            .create__former {
+                max-width: 100%;
+            }
+            label {
+                font-size: 1rem;
+            }
+            textarea {
+                width: 100%;
+                height: 300px;
+                max-height: 300px;
+                min-height: 300px;
+                max-width: 100%;
+                min-width: 100%;
+                font-size: 1rem;
+            }
+        }
+        @media screen and (max-width:540px) {
+            .about__block {
+                flex-direction: column;
+                width: 100%;
+                padding: 0;
+            }
+            .about__inner {
+                padding: 0;
+            }
+            .stores__back {
+                max-width: 190px;
+                height: 400px;
+            }
+            .stores__lin {
+                width: 190px;
+                height: 400px;
+            }
+            .stores__body {
+                width: 170px;
+                height: 380px;
+                padding: 8%;
+            }
+            .stores__title {
+                font-size: 1.5rem;
+            }
+            story {
+                margin: 0
+            }
+            .post__button, .post {
+                width: 100%;
+                height: 240px;
+                max-width: 100%;
+                min-width: 100%;
+                margin: 2% 0;
+            }
+            .story__inner {
+                position: relative;
+            }
+            .about__line {
+                display: none;
+            }
+            .about__image {
+                width: 100%;
+                max-width: 100%;
+                min-width: 100%;
+            }
+            .about__text {
+                font-size: 1rem;
+                max-width: 100%;
+                margin: 6% 0;
+            }
+            .intro__desc {
+                max-width: 90%;
+                font-size: 1.2rem;
+                position: absolute;
+                top: 50%;
+            }
+            .intro__h {
+                font-size: 2.6rem;
+            }
+            .story__item {
+                width: 100%;
+                height: 100%;
+                padding: 3%;
+                max-width: 200px;
+            }
+            .story__top {
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+            .story__bottom {
+                font-size: .8rem;
+            }
+            story video {
+                width: 200px;
+            }
+            .about__missing__h {
+                font-size: 1.7rem;
+                margin: 0.5rem 0;
+            }
+            .about__missing__desc {
+                max-width: 700px;
+                text-align: center;
+                font-size: 1rem;
+            }
+            .about__reverse {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+            storiess {
+                padding: 0 2%;
+                margin: 18% 0 8%;
+            }
+            .about__mision {
+                margin: 5% 0;
+            }
+            posts {
+                row-gap: 1rem;
+            }
+            .intro__phone {
+                top: -20%;
+                right: -60%;
+                width: 300%;
+                left: -40%;
+            }
+            .content__post {
+                margin: 30% 0 5%;
+            }
+            .content__post {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .tags {
+                width: 100%;
+                max-width: 100%;
+                margin-bottom: 10%;
+                padding: 0;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+            .article {
+                padding: 0;
+                position: relative;
+                top: 5rem
+            } 
+            .line {
+                width: 60px;
+                height: 2px;
+            }
+            .article__item h1 {
+                margin: 3% 0;
+                font-size: 1.5rem;
+            }
+            .article__text {
+                max-width: 100%;
+                width: 100%;
+            }
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                height: 400px;
+                max-height: 400px;
+                margin: 0;
+                object-fit: cover;
+                border-width: 0 !important;
+                text-align: center;
+                float: none !important;
+            }
+            .article__item {
+                padding: 1% 4% 10%;
+            }
+            .article__nav {
+                margin: 6% 0;
+            }
+            .likes {
+                margin: 5% 0;
+            }
+            .comment__form {
+                margin: 4% 0;
+            }
+            .comment__input {
+                font-size: 1rem;
+            }
+        }
+        .black {
+            background-color:#0a0a0a
+        }
+        .pre__slider {
+            width: 100%;
+
+        }
     </style>
     
+    <script src="{% static 'libres/node_modules/swiper/swiper-bundle.min.js' %}"></script>
     <script src="{% static 'scripts/app.js' %}"></script>
     <script src="{% static 'scripts/story.js' %}"></script>
+    <script src="{% static 'scripts/slider.js' %}"></script>
 </body>
 </html>

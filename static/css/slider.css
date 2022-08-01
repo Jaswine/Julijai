@@ -1,0 +1,107 @@
+.pre__slider {
+    overflow: hidden;
+    position: relative;
+    height: 110vh;
+}
+.slider {
+    margin: 5% 0 0 0;
+    width: 100%;
+    height: 100%;
+    top: 10vh;
+    overflow: visible;
+    transform: rotate(15deg);
+}
+.slider__bg {
+    transform: rotate(-15deg) !important;
+    z-index: -1;
+    top: -90vh;
+    left: -10vh;
+    /* opacity: .4;  hnuyjjimjmk,gt6frdrghyikolp;[uhbgu8--/'.;'= */
+    filter: saturate(10) blur(120px);
+    overflow: hidden;
+}
+
+.slider__wrapper {
+   transition: .7s cubic-bezier(.2, .6, 0, 1) !important ;
+   will-change: transform;
+}
+.slider__item {
+    width: 100%;
+    height: 75vh;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px 5px 15px 5px;
+    /* box-shadow: 2px 2px 1px var(--orange) -2px -2px 1px var(--green); */
+    cursor: pointer;
+    transition:  all .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: .7s cubic-bezier(.2, .6, 0, 1) !important ;
+}
+.slider__img {
+    height: 100%;
+    width: 200%;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    /* left: -100%; */
+    filter: saturate(1) brightness(90%) sepia(10%);
+    transition: .7s cubic-bezier(.2, .6, 0, 1) !important ;
+    will-change: transform;
+}
+
+.pre__description {
+    position: absolute;
+    font-size: calc(var(--size)*1.7);
+    font-weight: 100;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    top: 30vh;
+    left: 8vh;
+    max-width: 40vh;
+    width: 100%;
+    transition: all .4s linear;
+}
+.slider__title {
+    font-size: calc(var(--size)*3.6);
+    line-height: calc(var(--size)*3) ;
+    padding-bottom: 8%;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--green), var(--orange));
+    display: inline-block;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.slider__text {
+    opacity: .9;
+}
+
+.pre__description.hidden {
+    opacity: 0;
+    transform: translateY(5vh);
+    transition: all .4s linear;
+}
+
+@media screen and (max-width:660px) {
+    .pre__description {
+        font-size: calc(var(--size)*2.7);
+        top: 20vh;
+        left: 2vh;
+        max-width: 20vh;
+        width: 100%;
+    }
+    .slider__title {
+        font-size: calc(var(--size)*6.8);
+        line-height: calc(var(--size)*5) ;
+        padding-bottom: 14%;
+    }
+    .slider__text {
+        font-size: calc(var(--size)*4.3);
+        line-height: calc(var(--size)*4) ;
+    }
+    .pre__slider {
+        height: 70vh;
+    }
+    .slider__item {
+        width: 100%;
+        height: 50vh;
+    }
+}

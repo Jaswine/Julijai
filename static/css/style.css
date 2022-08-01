@@ -217,6 +217,7 @@ header {
   min-width: 240px;
   box-shadow: 0 0 10px 4px black;
   opacity: 0;
+  display: none;
 }
 @keyframes navbar__mar {
   0% {

@@ -173,3 +173,5 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'MyCustomToolbar',
     },
 }
+
+CSRF_COOKIE_SECURE = True

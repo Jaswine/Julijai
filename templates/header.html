@@ -36,6 +36,7 @@
                 <a href="{% url 'base:create-story' %}" class = "btn btn-max btn-shadow">create stories</a>
                 <a href="{% url 'base:create-tag' %}" class = "btn btn-max btn-shadow">create tag</a>
                 {% endif %}
+                <a class="btn btn-max btn-shadow" href="{% url 'base:change-profile' request.user.id %}">Изменить Профиль</a>
                 <a href = "{% url 'base:logout' %}" class = "btn btn-max btn-shadow">logout</a>
             </div>
         </div>
@@ -48,6 +49,63 @@
                 width: 45px;
                 height: 45px;
                 min-width: 45px;
+            }
+            @media screen and (max-width:600px) {
+                .search__field {
+                    display: none;
+                }
+                .header__name {
+                    font-size: 1.8rem;
+                }
+                .header__desc {
+                    font-size: 1rem;
+                }
+                header {
+                    background-color: rgb(8 8 8);
+                    padding: 0 1%;
+                    height: 80px;
+                }
+                
+            }
+            .header__add:hover  .header__navbar {
+                animation-name: navbar__mar;
+                animation-duration: .6s;
+                opacity: 1;
+                display: flex;
+                }
+            .header__navbar {
+                position: fixed;
+                right: 0;
+                display: flex;
+                align-items: flex-end;
+                flex-direction: column;
+                background-color: black;
+                min-width: 200px;
+                box-shadow: 0 0 10px 4px black;
+                opacity: 0;
+                display: none;
+                top: 9%;
+            }
+            @media screen and (max-width:540px) {
+                .header__navbar {
+                    top: 12%;
+                }
+            }
+            .header__avatar {
+                width: 40px;
+                height: 40px;
+                min-width: 40px;
+                max-width: 40px;
+                max-height: 40px;
+                min-height: 40px;
+            }
+            .icon {
+                width: 1.2rem;
+                height: 1.2rem;
+                min-width: 1.2rem;
+                max-width: 1.2rem;
+                max-height: 1.2rem;
+                min-height: 1.2rem;
             }
         </style>
     </div>

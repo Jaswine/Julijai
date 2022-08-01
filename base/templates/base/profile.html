@@ -81,7 +81,7 @@
       </div>
         {% endfor %}
       {% else %}
-      <h3 class = "none">Здесь нет комментариев</h3>
+      <h3 class = "center">Здесь нет комментариев</h3>
       {% endif %}
   </div>
   </div>
@@ -93,4 +93,28 @@
     </div>
   </div>
 </div>
+<style>
+  @media screen and (max-width: 540px) {
+    .profile {
+      margin: 30% 0 10%;
+    }
+    .after-profile {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 0 5%;
+      margin: 2% 0;
+    }
+    .comments {
+      margin: 5% 0;
+    }
+    .center {
+      text-align: center;
+      margin: 5% 0;
+    }
+    .right {
+      flex-wrap: wrap;
+    }
+  }
+</style>
 {% endblock content %}

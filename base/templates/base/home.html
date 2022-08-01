@@ -39,7 +39,7 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placerat duis ultricies lacus sed.
             </div>
         </div>
-        <div class = "about__block">
+        <div class = "about__block about__reverse">
             <div class = "about__text">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placerat duis ultricies lacus sed.
             </div>
@@ -58,10 +58,104 @@
             </div>
         </div>
     </div>
-    <div class = "about__mision">
-        <div class = "about__missing__h">OUR Missing</div>
-        <div class = "about__missing__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placerat duis ultricies lacus sed.</div>
+<!-- * SLider-->
+<div class="pre__slider">
+
+    <div class="pre__description">
+        <div class="slider__title">Что у нас есть?</div>
+        <div class="slider__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore tempora quisquam consequuntur debitis distinctio eum laboriosam minus harum asperiores natus quam.</div>
     </div>
+
+    <div class="swiper slider slider__main">
+        <div class="swiper-wrapper slider__wrapper">
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="20%"  style="background-image: url('../../../static/images/galery/pin (10).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="30%" style="background-image: url('../../../static/images/galery/pin (4).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="20%" style="background-image: url('../../../static/images/galery/pin (9).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="30%" style="background-image: url('../../../static/images/galery/pin (2).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="20%" style="background-image: url('../../../static/images/galery/pin (13).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="30%" style="background-image: url('../../../static/images/galery/pin (11).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="20%" style="background-image: url('../../../static/images/galery/pin (13).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="30%" style="background-image: url('../../../static/images/galery/pin (14).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="20%"  style="background-image: url('../../../static/images/galery/pin (1).jpg')"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="swiper slider slider__bg black">
+        <div class="swiper-wrapper slider__wrapper">
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="20%"  style="background-image: url('../../../static/images/galery/pin (10).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="30%" style="background-image: url('../../../static/images/galery/pin (4).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="20%" style="background-image: url('../../../static/images/galery/pin (9).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="30%" style="background-image: url('../../../static/images/galery/pin (2).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="20%" style="background-image: url('../../../static/images/galery/pin (13).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="30%" style="background-image: url('../../../static/images/galery/pin (11).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="20%" style="background-image: url('../../../static/images/galery/pin (13).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="30%" style="background-image: url('../../../static/images/galery/pin (14).jpg')"></div>
+            </div>
+
+            <div class="swiper-slide slider__item">
+                <div class="slider__img" data-swiper-parallax="20%"  style="background-image: url('../../../static/images/galery/pin (1).jpg')"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class = "about__mision">
+    <div class = "about__missing__h">OUR Missing</div>
+    <div class = "about__missing__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placerat duis ultricies lacus sed.</div>
+</div>
 </div>
 
 <!-- ! Stories -->
@@ -87,6 +181,5 @@
             <a href="{% url 'base:posts' %}" class="btn btn-cont">Перейти</a>
         </div>
     </div>
-</div>
 </div>
 {% endblock content %}
