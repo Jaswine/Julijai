@@ -40,3 +40,18 @@ Hi everyone. The project is under active development. I am not writing the front
 
 ![image](https://user-images.githubusercontent.com/82625479/181196875-fe945151-bdce-489d-aef9-531e723a3fb1.png)
 
+<br>
+<h2>Mobile Version</h2>
+<br>
+
+![image](https://user-images.githubusercontent.com/82625479/182100854-d8f15261-5895-46e6-bc63-c055f124bf58.png)
+
+<br>
+
+![image](https://user-images.githubusercontent.com/82625479/182100978-77032eac-abef-4dd8-b840-2f83579f4f18.png)
+
+<br>
+
+![image](https://user-images.githubusercontent.com/82625479/182101837-f6ce50b3-346e-46f0-8927-e4ea9aacadd9.png)
+
+<br>
