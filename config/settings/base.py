@@ -33,25 +33,13 @@ TODO: просто дайте этому пользователю статус �
 
 """
 
+import dj_database_url
+from dotenv import load_dotenv, find_dotenv
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5lm-ij_2i_1#c+p3z#^xj20dl=h&c3eq#2pn_ki^ml*+$c8c1_'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = []
-
-# DEBUG = False
-# ALLOWED_HOSTS = ['127.0.0.1']
-
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Application definition
 
@@ -67,6 +55,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'corsheaders',
     'django_social_share',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -80,7 +69,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Julijai.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -100,18 +89,21 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Julijai.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+load_dotenv(find_dotenv())
+
+DATABASES = {'default':dj_database_url.config(default='sqlite:///db.sqlite3',conn_max_age=600,ssl_require=False)}
 
 
 # Password validation
@@ -150,6 +142,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'

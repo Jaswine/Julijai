@@ -23,5 +23,5 @@ urlpatterns = [
     path('', include('base.urls')),
 ]
 
-handler404 = "Julijai.views.page_not_found_view"
+handler404 = "config.views.page_not_found_view"
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
