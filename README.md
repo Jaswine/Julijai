@@ -1,5 +1,7 @@
 # Julijai
  
+ <h1>YEEESS, my site was launched, many thanks to Boris and Stanislav, U Can To See It!!! -> go here -> <a href='https://julijai.pbk.kz/'>Julijay</a></h1>
+ 
 Hi everyone. The project is under active development. I am not writing the frontend yet, because I want to write the norms back to start.
 <h2>If u don't know how to run django project: #<a href="https://docs.djangoproject.com/en/4.0/" >link on documentatinon</a></h2>
 <br><hr><br>
