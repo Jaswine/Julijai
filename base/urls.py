@@ -1,33 +1,43 @@
 from django.urls import path
-from . import views
+from .views import home, registration
 
 app_name = 'base'
 
 urlpatterns = [
-    path('login/', views.loginPage, name='login'),
-    path('logout/', views.logoutUser, name='logout'),
-    path('register/', views.registersUser, name='register'),
+    #TODO: authorization(login|logout&register)
+    path('login/', registration.loginPage, name='login'),
+    path('logout/', registration.logoutUser, name='logout'),
+    path('register/', registration.registersUser, name='register'),
 
-    path('', views.home, name='home' ),
-    path('posts/', views.posts, name='posts'),
-    path('posts/<str:pk>/', views.post, name='post'),
+    #TODO: home
+    path('', home.home, name='home' ),
+    path('posts/', home.posts, name='posts'),
+    path('posts/<str:pk>/', home.post, name='post'),
 
-    path('create-tag/',views.createTag,name='create-tag'),
-    path('delete-tag/<str:pk>/',views.deleteTag, name='delete-tag'),
+    #TODO: tags
+    path('create-tag/',home.createTag,name='create-tag'),
+    path('delete-tag/<str:pk>/',home.deleteTag, name='delete-tag'),
 
-    path('create-post/', views.createPost, name = 'create-post'),
-    path('delete-post/<str:pk>/',views.deletePost, name = 'delete-post'),
-    path('update-post/<str:pk>/', views.updatePost, name='update-post'),
-    path('<str:pk>/like/', views.AddLike.as_view(), name='like'),
-    path('<str:pk>/dislike/', views.AddDislike.as_view(), name='dislike'),
-    path('comment-delete/<str:pk>/', views.commentDelete, name='comment-delete'),
+    #TODO: post
+    path('create-post/', home.createPost, name = 'create-post'),
+    path('delete-post/<str:pk>/',home.deletePost, name = 'delete-post'),
+    path('update-post/<str:pk>/', home.updatePost, name='update-post'),
 
-    path('create-stor-y/', views.createStory, name='create-story'),
-    path('delete-story/<str:pk>/', views.deleteStory, name='delete-story'),
-    path('update-story/<str:pk>/', views.updateStory, name='update-story'),
-    path('<str:pk>/likeStory/', views.AddLikeStory.as_view(), name='like__story'),
-    path('<str:pk>/likeStory/', views.AddDislikeStory.as_view(), name='dislike__story'),
+    #TODO: likes for posts
+    path('<str:pk>/like/', home.AddLike.as_view(), name='like'),
+    path('<str:pk>/dislike/', home.AddDislike.as_view(), name='dislike'),
+    path('comment-delete/<str:pk>/', home.commentDelete, name='comment-delete'),
 
-    path('profile/<str:pk>/', views.Profile, name='profile'),
-    path('change-profile/<str:pk>/', views.updateProfile, name='change-profile'),
+    #TODO: STORY
+    path('create-story/', home.createStory, name='create-story'),
+    path('delete-story/<str:pk>/', home.deleteStory, name='delete-story'),
+    path('update-story/<str:pk>/', home.updateStory, name='update-story'),
+
+     #TODO: likes for story
+    # path('<str:pk>/likeStory/', home.AddLikeStory.as_view(), name='like__story'),
+    # path('<str:pk>/likeStory/', home.AddDislikeStory.as_view(), name='dislike__story'),
+
+    #TODO: profile
+    path('profile/<str:pk>/', registration.Profile, name='profile'),
+    path('change-profile/<str:pk>/', registration.updateProfile, name='change-profile'),
 ]
