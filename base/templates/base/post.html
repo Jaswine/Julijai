@@ -99,7 +99,7 @@
                             </div>
                             <div class="comment__left__nav">
                                 {% if request.user == comment.user %}
-                                <a href="{% url 'base:comment-delete' comment.id %}" class=""><img src="{% static 'images/close.svg' %}" class="icon" alt=""></a>
+                                <a href="{% url 'base:comment-delete' comment.id %}" class=""><span class="material-symbols-outlined icon delete-icon">close</span></a>
                                 {% endif %}
                             </div>
                         </div>

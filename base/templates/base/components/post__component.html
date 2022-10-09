@@ -1,28 +1,36 @@
 {% load static %}
-{% for post in posts %}
-    <div class="post">
-        {% if post.image %}
-        <img src="{{post.image.url}}" alt="{{post.image}}">
-        {% else %}
-        <img src="{% static 'images/reset.jpg' %}" alt="">
-        {% endif %}
-        <div class="post__inner">
-            <div class="post__border">
-                <a href="{% url 'base:posts' %}?q={{post.tag.name}}">#{{post.tag}}</a>
-                <a href = "{% url 'base:post' post.id %}"><h2 class="post__name">{{post.name}}</h2></a>
-            </div>
-            {% if request.user.is_authenticated %}
-                {% if request.user.is_superuser %}
-                    <div class = "post__buttons">
-                        <a href="{% url 'base:update-post' post.id %}" class ="btn">Изменить</a>
-                        <a href="{% url 'base:delete-post' post.id %}" class = "btn btn-red">Удалить</a>
-                    </div>
-                {% endif %}
+{% if posts %}
+    {% for post in posts %}
+        <div class="post">
+            {% if post.image %}
+            <img src="{{post.image.url}}" alt="{{post.image}}">
+            {% else %}
+            <img src="{% static 'images/reset.jpg' %}" alt="">
             {% endif %}
+            <div class="post__inner">
+                <div class="post__border">
+                    <a href="{% url 'base:posts' %}?q={{post.tag.name}}">#{{post.tag}}</a>
+                    <a href = "{% url 'base:post' post.id %}"><h2 class="post__name">{{post.name}}</h2></a>
+                </div>
+                {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                        <div class = "post__buttons">
+                            <a href="{% url 'base:update-post' post.id %}" class ="btn">Изменить</a>
+                            <a href="{% url 'base:delete-post' post.id %}" class = "btn btn-red">Удалить</a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
         </div>
-    </div>
-{% endfor %}
+    {% endfor %}
 
+{% else %}
+
+<div class="pre__posts__not__found">
+    <h1 class='posts__not__found'>Посты Не Найдены</h1>
+</div>
+
+{% endif %}
 <style>
     .post:hover {
         transform: translate(-7px,-7px);

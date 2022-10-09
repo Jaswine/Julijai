@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField  #? RichTextUploadingField
@@ -7,8 +8,8 @@ from django.conf import settings
 class ProfileUser(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     img = models.ImageField(null=True, blank=True, upload_to='static/images/',  validators=[img__size])
-    birthday = models.DateField(blank=True, null=True)
-    about = models.TextField(max_length=1000, null=True)
+    birthday = models.CharField(max_length=100, blank=True, default='')
+    about = models.TextField(max_length=1000, blank=True, default='')
 
     #? social media
     twitter = models.URLField(null=True, blank=True)
