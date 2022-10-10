@@ -18,12 +18,25 @@
       {% endif %}      
     {% endif %}
     <div class="profile__description">
+      {% if profileUser.birthday and profileUser.about %}{% endif %}
       <div class="profile__left">
         <div class="profile__Date">
           <img src="{% static 'images/calendar.png' %}" alt="" class = "icon">
-          <div class="profile__birthday">{{profileUser.birthday}}</div>
+            <div class="profile__birthday">
+              {% if profileUser.birthday %}
+                {{profileUser.birthday}}
+              {% else %}
+                День Рождение не указано
+              {% endif %}
+            </div>
         </div>
-          <div class="profile__about">{{profileUser.about}}</div>
+          <div class="profile__about">
+            {% if profileUser.about %}
+              {{profileUser.about}}
+            {% else %}
+              Здесь ничего нет
+            {% endif %}
+          </div>
       </div>
       <div class="profile__right">
         {% if profileUser.twitter %}
@@ -73,7 +86,9 @@
               </div>
               <div class="comment__left__nav">
                   {% if request.user == comment.user %}
-                  <a href="{% url 'base:comment-delete' comment.id %}" class=""><img src="{% static 'images/close.svg' %}" class="icon" alt=""></a>
+                  <a href="{% url 'base:comment-delete' comment.id %}" class="">
+                    <span class="material-symbols-outlined icon delete-icon">close</span>
+                  </a>
                   {% endif %}
               </div>
           </div>
@@ -81,7 +96,9 @@
       </div>
         {% endfor %}
       {% else %}
-      <h3 class = "center">Здесь нет комментариев</h3>
+      <div class="pre__posts__not__found">
+        <h1 class='posts__not__found'>Здесь Нет Комментариев</h1>
+      </div>
       {% endif %}
   </div>
   </div>
@@ -116,5 +133,14 @@
       flex-wrap: wrap;
     }
   }
+  .comment__avatar {
+    max-width: 30px;
+    min-height: 30px;
+    min-width: 30px;
+  }
+  .both {
+    margin: 0 2%;
+    font-weight: 900;
+}
 </style>
 {% endblock content %}

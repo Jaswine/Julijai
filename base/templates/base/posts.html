@@ -1,4 +1,4 @@
-{% extends 'main.html ' %}
+{% extends 'main.html' %}
 
 {% block title %}Все Посты{% endblock title %}
 
@@ -17,7 +17,7 @@
         <!-- <stories>
             {% include 'base/components/story__component.html' %}
         </stories> -->
-        <h2>Posts</h2>
+        <h2 class="h2__posts">Posts</h2>
         <hr>
 
         {% if posts__cout == 1 or posts__cout == 21 or posts__cout == 31 or posts__cout == 41 or posts__cout == 51  %} <!--TODO: how many posts -->
@@ -27,9 +27,18 @@
         {% else %}
             <p>Всего найдено {{posts__cout}} постов</p>
         {% endif %}
+        
         <div class="posts"><!--TODO: posts-->
             {% include 'base/components/post__component.html' %}
         </div>
     </div>
 </div>
+<style>
+     .content__post {
+        margin-top: 6rem;
+     }
+     .h2__posts {
+        margin-bottom: .55rem;
+     }
+</style>
 {% endblock content %}
